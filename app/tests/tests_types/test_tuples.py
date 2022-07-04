@@ -48,5 +48,17 @@ def test_tuples_substracting(vector):
     assert astuple(result) == (-2, -4, -6, 0)
 
 
+def test_tuples_negating(point, vector):
+    result = -point
+    assert is_dataclass(result)
+    assert isinstance(result, Point)
+    assert astuple(result) == (-1, -2, -3, -1)
+
+    result = -vector
+    assert is_dataclass(result)
+    assert isinstance(result, Vector)
+    assert astuple(result) == (-5, -6, -7, 0)
+
+
 def test_approx_func():
     assert pytest.approx(2.3, 0.1) == 2.2

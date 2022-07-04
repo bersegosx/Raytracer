@@ -33,6 +33,14 @@ class Point:
             z=self.z - other.z
         )
 
+    def __neg__(self) -> Tuple:
+        return self.__class__(
+            x=-self.x,
+            y=-self.y,
+            z=-self.z,
+            w=-self.w
+        )
+
 
 @dataclass(frozen=True)
 class Vector(Point):
