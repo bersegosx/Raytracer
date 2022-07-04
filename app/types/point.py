@@ -46,3 +46,10 @@ class Vector(Point):
             z=self.z + other.z,
             w=self.w + other.w
         )
+
+    def __sub__(self, other: 'Vector') -> 'Vector':
+        return Vector(
+            x=self.x - other.x,
+            y=self.y - other.y,
+            z=self.z - other.z
+        )

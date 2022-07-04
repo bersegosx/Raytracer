@@ -30,6 +30,7 @@ def test_tuple_add(point, vector):
 
 def test_tuples_substracting(vector):
     p1, p2 = Point(3, 2, 1), Point(5, 6, 7)
+    v1 = Vector(3, 2, 1)
 
     result = p1 - p2
     assert is_dataclass(result)
@@ -40,6 +41,11 @@ def test_tuples_substracting(vector):
     assert is_dataclass(result)
     assert isinstance(result, Point)
     assert astuple(result) == (-2, -4, -6, 1)
+
+    result = v1 - vector
+    assert is_dataclass(result)
+    assert isinstance(result, Vector)
+    assert astuple(result) == (-2, -4, -6, 0)
 
 
 def test_approx_func():
