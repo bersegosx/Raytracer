@@ -2,6 +2,7 @@ import typing as t
 from dataclasses import dataclass
 
 Tuple: t.TypeAlias = t.Union['Point', 'Vector']
+Scalar: t.TypeAlias = int | float
 
 
 @dataclass(frozen=True)
@@ -35,10 +36,26 @@ class Point:
 
     def __neg__(self) -> Tuple:
         return self.__class__(
-            x=-self.x,
-            y=-self.y,
-            z=-self.z,
-            w=-self.w
+            x= -self.x,
+            y= -self.y,
+            z= -self.z,
+            w= -self.w
+        )
+
+    def __mul__(self, other: Scalar) -> Tuple:
+        return self.__class__(
+            x=self.x * other,
+            y=self.y * other,
+            z=self.z * other,
+            w=self.w * other,
+        )
+
+    def __truediv__(self, other: Scalar) -> Tuple:
+        return self.__class__(
+            x=self.x / other,
+            y=self.y / other,
+            z=self.z / other,
+            w=self.w / other,
         )
 
 

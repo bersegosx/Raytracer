@@ -60,5 +60,23 @@ def test_tuples_negating(point, vector):
     assert astuple(result) == (-5, -6, -7, 0)
 
 
+def test_tuples_multiply():
+    vector = Vector(1, -2, 3, -4)
+
+    result = vector * 3.5
+    assert is_dataclass(result)
+    assert isinstance(result, Vector)
+    assert astuple(result) == (3.5, -7, 10.5, -14)
+
+
+def test_tuples_division():
+    vector = Vector(1, -2, 3, -4)
+
+    result = vector / 2
+    assert is_dataclass(result)
+    assert isinstance(result, Vector)
+    assert astuple(result) == (0.5, -1, 1.5, -2)
+
+
 def test_approx_func():
     assert pytest.approx(2.3, 0.1) == 2.2
