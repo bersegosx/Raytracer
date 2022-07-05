@@ -78,5 +78,18 @@ def test_tuples_division():
     assert astuple(result) == (0.5, -1, 1.5, -2)
 
 
+@pytest.mark.parametrize("vector_params, expected", [
+    ((0, 0, 0), 0),
+    ((0, 1, 0), 1),
+    ((0, 0, 1), 1),
+
+    ((1, 2, 3), 3.74165),
+    ((-1, -2, -3), 3.74165),
+])
+def test_tuple_magnitude(vector_params, expected):
+    v = Vector(*vector_params)
+    assert pytest.approx(v.magnitude(), 0.00001) == expected
+
+
 def test_approx_func():
     assert pytest.approx(2.3, 0.1) == 2.2

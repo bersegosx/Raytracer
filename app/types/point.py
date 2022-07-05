@@ -1,6 +1,8 @@
 import typing as t
 from dataclasses import dataclass
 
+import numpy as np
+
 Tuple: t.TypeAlias = t.Union['Point', 'Vector']
 Scalar: t.TypeAlias = int | float
 
@@ -57,6 +59,10 @@ class Point:
             z=self.z / other,
             w=self.w / other,
         )
+
+    def magnitude(self) -> Scalar:
+        np_array = np.array([self.x, self.y, self.z, self.w])
+        return np.linalg.norm(np_array)
 
 
 @dataclass(frozen=True)
