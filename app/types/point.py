@@ -64,6 +64,11 @@ class Point:
         np_array = np.array([self.x, self.y, self.z, self.w])
         return np.linalg.norm(np_array)
 
+    def normalize(self) -> Tuple:
+        np_array = np.array([self.x, self.y, self.z, self.w])
+        np_normalized_array = np_array / self.magnitude()
+        return self.__class__(*np_normalized_array)
+
 
 @dataclass(frozen=True)
 class Vector(Point):

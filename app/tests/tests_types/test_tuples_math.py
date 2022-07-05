@@ -1,6 +1,7 @@
 from dataclasses import astuple, is_dataclass
 
 import pytest
+from pytest import approx
 
 from app.types.point import Point, Vector
 
@@ -88,8 +89,21 @@ def test_tuples_division():
 ])
 def test_tuple_magnitude(vector_params, expected):
     v = Vector(*vector_params)
-    assert pytest.approx(v.magnitude(), 0.00001) == expected
+    assert approx(v.magnitude(), 0.00001) == expected
+
+
+def test_tuple_normalize():
+    v = Vector(4, 0, 0)
+    assert astuple(v.normalize()) == (1, 0, 0, 0)
+
+    v = Vector(1, 2, 3)
+    v_norm = v.normalize()
+    r = astuple(v_norm)
+    assert approx(r[0], 0.00001) == 0.26726
+    assert approx(r[1], 0.00001) == 0.53452
+    assert approx(r[2], 0.00001) == 0.80178
+    assert r[3] == 0
 
 
 def test_approx_func():
-    assert pytest.approx(2.3, 0.1) == 2.2
+    assert approx(2.3, 0.1) == 2.2
