@@ -105,5 +105,19 @@ def test_tuple_normalize():
     assert r[3] == 0
 
 
+def test_tuple_dot_product():
+    v1 = Vector(1, 2, 3)
+    v2 = Vector(2, 3, 4)
+    assert v1.dot_product(v2) == 20
+
+
+def test_tuple_cross_product():
+    v1 = Vector(1, 2, 3)
+    v2 = Vector(2, 3, 4)
+
+    assert v1.cross_product(v2) == Vector(-1, 2, -1)
+    assert v2.cross_product(v1) == Vector(1, -2, 1)
+
+
 def test_approx_func():
     assert approx(2.3, 0.1) == 2.2

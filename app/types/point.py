@@ -89,3 +89,17 @@ class Vector(Point):
             y=self.y - other.y,
             z=self.z - other.z
         )
+
+    def dot_product(self, other: Tuple) -> Scalar:
+        return np.dot(
+            np.array([self.x, self.y, self.z, self.w]),
+            np.array([other.x, other.y, other.z, other.w])
+        )
+
+    def cross_product(self, other: Tuple) -> 'Vector':
+        return Vector(
+            *np.cross(
+                np.array([self.x, self.y, self.z]),
+                np.array([other.x, other.y, other.z])
+            )
+        )
